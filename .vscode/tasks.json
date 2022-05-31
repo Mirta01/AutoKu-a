@@ -4,13 +4,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Start database",
+            "label": "Database",
             "type": "shell",
             "command": "mysqld --console --basedir=${workspaceFolder}/db --datadir=data",
             "problemMatcher": []
         },
         {
-            "label": "Start UI",
+            "label": "UI",
             "type": "shell",
             "command": "npm start",
             "options": {
@@ -19,13 +19,18 @@
             "problemMatcher": []
         },
         {
-            "label": "Start server",
+            "label": "Server",
             "type": "shell",
             "command": "php -S localhost:7000 -c php.ini",
             "options": {
                 "cwd": "${workspaceFolder}/src"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Start",
+            "dependsOn": ["Database", "UI", "Server"],
+            "group": "build"
         }
     ]
 }
