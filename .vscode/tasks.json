@@ -8,6 +8,15 @@
             "type": "shell",
             "command": "mysqld --console --basedir=${workspaceFolder}/db --datadir=data",
             "problemMatcher": []
+        },
+        {
+            "label": "Start UI",
+            "type": "shell",
+            "command": "npm start",
+            "options": {
+                "cwd": "${workspaceFolder}/ui"
+            },
+            "problemMatcher": []
         }
     ]
 }
