@@ -17,6 +17,15 @@
                 "cwd": "${workspaceFolder}/ui"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Start server",
+            "type": "shell",
+            "command": "php -S localhost:7000 -c php.ini",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "problemMatcher": []
         }
     ]
 }
