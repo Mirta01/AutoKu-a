@@ -1,0 +1,26 @@
+.navTitle{
+    font-family: Andale Mono, monospace;
+    margin-left: 2rem;
+    font-weight: bold;
+}
+
+nav{
+    background-color: #e3f2fd;
+}
+
+select{
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.addBtn{
+    border: 1px solid #ccc !important;
+    margin-right: 1rem;
+}
+
+.tableD{
+    margin-top: 1rem;
+}

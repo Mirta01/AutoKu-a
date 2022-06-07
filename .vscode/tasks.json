@@ -12,7 +12,7 @@
         {
             "label": "UI",
             "type": "shell",
-            "command": "npm start",
+            "command": "npm run start-legacy",
             "options": {
                 "cwd": "${workspaceFolder}/ui"
             },
