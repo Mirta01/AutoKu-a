@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import './style.css';
+import { Link } from 'react-router-dom';
 import {Button, Table} from 'react-bootstrap'
 import {BsFillTrashFill, BsFillPencilFill} from "react-icons/bs"
 
@@ -22,7 +23,10 @@ function VoziloTablica()
         <nav className="navbar navbar-light">
             <h3 className='navTitle'>VuV AUTOMOBILI</h3>
             <div>
-                <Button className='addBtn' variant="outline-dark">Dodaj</Button>{' '}
+                <Link to={"/create"}>
+                    <Button className='addBtn' variant="outline-dark">
+                    Dodaj</Button>{' '}
+                </Link>
 
                 <select id="narudbe">
                     <option value="all">Vozila</option>
@@ -43,8 +47,8 @@ function VoziloTablica()
                     <th scope='col'>Godina proizvodnje</th>
                     <th scope='col'>Snaga motora</th>
                     <th scope='col'>Salon</th>
-                    <th scope='col'>Obriši</th>
-                    <th scope='col'>Uredi</th>
+                    <th scope='col' style={{width: '4%'}}>Obriši</th>
+                    <th scope='col' style={{width: '4%'}}>Uredi</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +64,11 @@ function VoziloTablica()
                         <td>{x.snaga} kW</td>
                         <td>{x.salon}</td>
                         <td onClick={() => {DeleteVehicle(x.sifra)}}><BsFillTrashFill/></td>
-                        <td><BsFillPencilFill/></td>
+                        <td>
+                            <Link to={"/alter/"+x.sifra} className='text-dark'>
+                                <BsFillPencilFill/>
+                            </Link>
+                        </td>
                     </tr>)
                 })}
             </tbody>
