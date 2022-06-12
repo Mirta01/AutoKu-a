@@ -23,54 +23,85 @@ function Create()
         </nav>
 
         <div className="formBody">
-            <Form>
+            <Form >
                 <Form.Group className="mb-3">
                     <Form.Label>Vrsta vozila</Form.Label>
-                    <Form.Select onChange={e => setVrsta(e.target.value)}>
+                    <Form.Select onChange={e => setVrsta(e.target.value)} required>
+                    <option selected disabled>Odaberi vrstu</option>
                     <option>Automobil</option>
                     <option>Motocikl</option>
                     </Form.Select>
                 </Form.Group>
 
-                <Form.Group className="mb-3" onInput={e => setTip(e.target.value)}>
+                <Form.Group className="mb-3">
                     <Form.Label>Tip</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Select onChange={e => setTip(e.target.value)} required>
+                    <option selected disabled>Odaberi tip</option>
+                    {
+                        vrsta === "Automobil" ? <>
+                            <option>Limuzina</option>
+                            <option>Coupé</option>
+                            <option>Kabriolet</option>
+                            <option>Kombi</option>
+                            <option>Crossover</option>
+                            <option>Karavan</option>
+                            <option>Terenski automobil</option>
+                            <option>Sedan</option>
+                            <option>Hatchback</option>
+                        </>
+                        : <></>
+                    }
+                    {
+                        vrsta === "Motocikl" ?
+                        <>
+                            <option>Choppere</option>
+                            <option>Kruzer</option>
+                            <option>Touring</option>
+                            <option>Supermoto</option>
+                            <option>Skuter</option>
+                            <option>Off road</option>
+                            <option>Criuser</option>
+                            <option>Standard</option>
+                        </>
+                        : <></>
+                    }
+                    </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" onInput={e => setModel(e.target.value)}>
                     <Form.Label>Model</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Control type="text" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" onInput={e => setProizvodac(e.target.value)}>
                     <Form.Label>Proizvođač</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Control type="text" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" onInput={e => setOznaka(e.target.value)}>
                     <Form.Label>Oznaka</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Control type="text" required/>
                 </Form.Group>
                 
                 <Form.Group className="mb-3" onInput={e => setGodina(e.target.value)}>
                     <Form.Label>Godina</Form.Label>
-                    <Form.Control type="number"/>
+                    <Form.Control type="number" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" onInput={e => setSnaga(e.target.value)}>
                     <Form.Label>Snaga motora</Form.Label>
-                    <Form.Control type="number"/>
+                    <Form.Control type="number" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" onInput={e => setSalon(e.target.value)}>
                     <Form.Label>Id salona</Form.Label>
-                    <Form.Control type="number"/>
+                    <Form.Control type="number" required/>
                 </Form.Group>
 
                 <Button
                 variant="outline-primary"
-                type="button"
-                onClick={()=>{
+                type="submit"
+                onSubmit={()=>{
                     axios({
                         method: 'post',
                         url: 'http://localhost:7000/create.php',

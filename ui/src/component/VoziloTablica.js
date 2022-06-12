@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
-import {Button, Table} from 'react-bootstrap'
+import {Button, Table, Dropdown} from 'react-bootstrap'
 import {BsFillTrashFill, BsFillPencilFill} from "react-icons/bs"
 
 const baseURL = "http://localhost:7000/";
@@ -11,6 +11,7 @@ const baseURL = "http://localhost:7000/";
 function VoziloTablica()
 {
     const[vozilo, setVozilo]= useState([]);
+    const[status, setStatus]= useState([]);
 
     useEffect(() => {
         axios.get(baseURL + "read.php").then((response) => {
@@ -22,17 +23,21 @@ function VoziloTablica()
         <>
         <nav className="navbar navbar-light">
             <h3 className='navTitle'>VuV AUTOMOBILI</h3>
-            <div>
+            <div className='d-flex flex-direction-row'>
                 <Link to={"/create"}>
                     <Button className='addBtn' variant="outline-dark">
-                    Dodaj</Button>{' '}
+                    Dodaj</Button>
                 </Link>
 
-                <select id="narudbe">
-                    <option value="all">Vozila</option>
-                    <option value="ordered">Naručeni</option>
-                    <option value="free">Slobodni</option>
-                </select>
+                <Dropdown>
+                    <Dropdown.Toggle className="selectBorder" variant="outline-dark" id="dropdown-basic"></Dropdown.Toggle>
+
+                    <Dropdown.Menu onChange={e => setStatus(e.target.value)}>
+                        <Dropdown.Item href="#/action-1">Vozila</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Naručeni</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Slobodni</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
         </nav>
         <Table striped bordered hover className='tableD'>

@@ -21,11 +21,10 @@ if (isset($_GET["sifra"]))
     
     $oVozilo = new Vozilo($sifra, $vrsta, $tip, $model, $proizvodac, $oznaka, $godina, $snaga, $salon);
     array_push($aVozila, $oVozilo);
-
 }
 else
 {
-    $sQuery = "SELECT * FROM vozilo";
+    $sQuery = "SELECT vozilo.*, salon.ime FROM vozilo LEFT JOIN salon ON vozilo.salon = salon.id ";
     $oRecord = $Connection->query($sQuery);
     $aVozila = array();
     
@@ -38,7 +37,7 @@ else
         $oznaka = $oRow['oznaka'];
         $godina = $oRow['godina'];
         $snaga = $oRow['snaga'];
-        $salon = $oRow['salon'];
+        $salon = $oRow['ime'];
     
         $oVozilo = new Vozilo($sifra, $vrsta, $tip, $model, $proizvodac, $oznaka, $godina, $snaga, $salon);
         array_push($aVozila, $oVozilo);
