@@ -52,15 +52,46 @@ function Alter()
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Vrsta vozila</Form.Label>
-                    <Form.Select value={vrsta.charAt(0).toUpperCase() + vrsta.slice(1)} onChange={e => setVrsta(e.target.value)}>
+                    <Form.Select aria-selected={vrsta.charAt(0).toUpperCase() + vrsta.slice(1)} onChange={e => setVrsta(e.target.value)} required >
+                    <option disabled>Odaberi vrstu</option>
                     <option>Automobil</option>
                     <option>Motocikl</option>
                     </Form.Select>
                 </Form.Group>
 
-                <Form.Group className="mb-3" onInput={e => setTip(e.target.value)}>
+                <Form.Group className="mb-3">
                     <Form.Label>Tip</Form.Label>
-                    <Form.Control type="text" defaultValue={tip} />
+                    <Form.Select onChange={e => setTip(e.target.value)} required>
+                    <option disabled>Odaberi tip</option>
+                    {
+                        vrsta === "Automobil" ? <>
+                            <option>Limuzina</option>
+                            <option>Coupé</option>
+                            <option>Kabriolet</option>
+                            <option>Kombi</option>
+                            <option>Crossover</option>
+                            <option>Karavan</option>
+                            <option>Terenski automobil</option>
+                            <option>Sedan</option>
+                            <option>Hatchback</option>
+                        </>
+                        : <></>
+                    }
+                    {
+                        vrsta === "Motocikl" ?
+                        <>
+                            <option>Choppere</option>
+                            <option>Kruzer</option>
+                            <option>Touring</option>
+                            <option>Supermoto</option>
+                            <option>Skuter</option>
+                            <option>Off road</option>
+                            <option>Criuser</option>
+                            <option>Standard</option>
+                        </>
+                        : <></>
+                    }
+                    </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" onInput={e => setModel(e.target.value)}>
