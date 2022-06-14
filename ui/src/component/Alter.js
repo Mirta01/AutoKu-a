@@ -52,8 +52,7 @@ function Alter()
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Vrsta vozila</Form.Label>
-                    <Form.Select aria-selected={vrsta.charAt(0).toUpperCase() + vrsta.slice(1)} onChange={e => setVrsta(e.target.value)} required >
-                    <option disabled>Odaberi vrstu</option>
+                    <Form.Select aria-selected={vrsta.charAt(0).toUpperCase() + vrsta.slice(1)} onChange={e => setVrsta(e.target.value)} value={vrsta.charAt(0).toUpperCase() + vrsta.slice(1)} required >
                     <option>Automobil</option>
                     <option>Motocikl</option>
                     </Form.Select>
@@ -61,10 +60,9 @@ function Alter()
 
                 <Form.Group className="mb-3">
                     <Form.Label>Tip</Form.Label>
-                    <Form.Select onChange={e => setTip(e.target.value)} required>
-                    <option disabled>Odaberi tip</option>
+                    <Form.Select onChange={e => setTip(e.target.value)} value={tip.charAt(0).toUpperCase() + tip.slice(1)} required>
                     {
-                        vrsta === "Automobil" ? <>
+                        vrsta.charAt(0).toUpperCase() + vrsta.slice(1) === "Automobil" ? <>
                             <option>Limuzina</option>
                             <option>Coupé</option>
                             <option>Kabriolet</option>
@@ -78,7 +76,7 @@ function Alter()
                         : <></>
                     }
                     {
-                        vrsta === "Motocikl" ?
+                        vrsta.charAt(0).toUpperCase() + vrsta.slice(1) === "Motocikl" ?
                         <>
                             <option>Choppere</option>
                             <option>Kruzer</option>
