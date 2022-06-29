@@ -24,7 +24,7 @@ if (isset($_GET["sifra"]))
 }
 else
 {
-    $sQuery = "SELECT vozilo.*, salon.ime FROM vozilo LEFT JOIN salon ON vozilo.salon = salon.id ";
+    $sQuery = "SELECT vozilo.*, salon.ime FROM vozilo LEFT JOIN salon ON vozilo.salon = salon.id";
     $oRecord = $Connection->query($sQuery);
     $aVozila = array();
     
@@ -43,5 +43,12 @@ else
         array_push($aVozila, $oVozilo);
     }
 }
+
+function cmp($a, $b) {
+    return strcmp($a->vrsta, $b->vrsta);
+}
+
+usort($aVozila, "cmp");
+
 echo json_encode($aVozila);
 ?>

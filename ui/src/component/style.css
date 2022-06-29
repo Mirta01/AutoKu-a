@@ -1,5 +1,8 @@
 .navTitle{
     font-family: Andale Mono, monospace;
+    font-size: 1.75rem;
+    color: #555;
+    text-decoration: none;
     margin-left: 2rem;
     font-weight: bold;
 }
