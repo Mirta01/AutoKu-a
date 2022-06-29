@@ -35,6 +35,7 @@ function SalonTablica()
                 </Link>
             </div>
         </nav>
+
         <Table striped bordered hover className='tableD'>
             <thead>
                 <tr>

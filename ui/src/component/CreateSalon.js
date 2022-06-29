@@ -1,12 +1,9 @@
-import { useParams } from "react-router-dom";
 import React from 'react';
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import {Button, Form} from 'react-bootstrap'
-
-const baseURL = "http://localhost:7000/";
 
 function CreateSalon()
 {

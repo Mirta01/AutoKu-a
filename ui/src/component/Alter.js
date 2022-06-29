@@ -30,13 +30,8 @@ function Alter()
     },[]);
 
     useEffect(() => {
-        getVozilo(voziloSifra);
-    },[]);
-
-    async function getVozilo(sifra)
-    {
-        try {
-            const response = await axios.get('http://localhost:7000/read.php?sifra='+sifra);
+        axios.get('http://localhost:7000/read.php?sifra='+voziloSifra)
+        .then((response) => {
             setVrsta(response.data[0].vrsta)
             setTip(response.data[0].tip)
             setModel(response.data[0].model)
@@ -45,11 +40,8 @@ function Alter()
             setGodina(response.data[0].godina)
             setSnaga(response.data[0].snaga)
             setSalon(response.data[0].salon)
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
+        });
+    },[]);
 
     return (
         <>
@@ -93,32 +85,32 @@ function Alter()
 
                 <Form.Group className="mb-3">
                     <Form.Label>Tip</Form.Label>
-                    <Form.Select onChange={e => setTip(e.target.value)} value={tip} required>
+                    <Form.Select onChange={e => setTip(e.target.value)} required>
                     {
                         vrsta === "Automobil" ? <>
-                            <option>Limuzina</option>
-                            <option>Coupé</option>
-                            <option>Kabriolet</option>
-                            <option>Kombi</option>
-                            <option>Crossover</option>
-                            <option>Karavan</option>
-                            <option>Terenski automobil</option>
-                            <option>Sedan</option>
-                            <option>Hatchback</option>
+                            <option selected={tip === 'Limuzina'}>Limuzina</option>
+                            <option selected={tip === 'Coupé'}>Coupé</option>
+                            <option selected={tip === 'Kabriolet'}>Kabriolet</option>
+                            <option selected={tip === 'Kombi'}>Kombi</option>
+                            <option selected={tip === 'Crossover'}>Crossover</option>
+                            <option selected={tip === 'Karavan'}>Karavan</option>
+                            <option selected={tip === 'Terenski automobil'}>Terenski automobil</option>
+                            <option selected={tip === 'Sedan'}>Sedan</option>
+                            <option selected={tip === 'Hatchback'}>Hatchback</option>
                         </>
                         : <></>
                     }
                     {
                         vrsta === "Motocikl" ?
                         <>
-                            <option>Choppere</option>
-                            <option>Kruzer</option>
-                            <option>Touring</option>
-                            <option>Supermoto</option>
-                            <option>Skuter</option>
-                            <option>Off road</option>
-                            <option>Criuser</option>
-                            <option>Standard</option>
+                            <option selected={tip === 'Choppere'}>Choppere</option>
+                            <option selected={tip === 'Kruzer'}>Kruzer</option>
+                            <option selected={tip === 'Touring'}>Touring</option>
+                            <option selected={tip === 'Supermoto'}>Supermoto</option>
+                            <option selected={tip === 'Skuter'}>Skuter</option>
+                            <option selected={tip === 'Off road'}>Off road</option>
+                            <option selected={tip === 'Criuser'}>Criuser</option>
+                            <option selected={tip === 'Standard'}>Standard</option>
                         </>
                         : <></>
                     }
